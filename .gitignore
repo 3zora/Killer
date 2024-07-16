@@ -1,162 +1,179 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+@echo off
+chcp 65001
+title Killer Tool By 3zora
+color f0
 
-# C extensions
-*.so
+:menu
+cls                                                                    
+echo          [30m_ _,---._                                              
+echo       [30m,-','       `-.___
+echo     [30m ^/-;'               `._
+echo     [30m^/^\ ^/          ._   _,'[30mo [30m^\            
+echo    [30m( ^/^\       _,--'^\,','"`. )                       
+echo     [30m^|^\      ,'[30mo     [30m^\'    ^/ ^/^\              
+echo     [30m^|      ^\        ^/   ,--'""`-.
+echo     [30m:       ^\_    _ ^/ ,-'         `-._               
+echo      [30m^\        `--'  ^/                ) 
+echo       [30m`.  ^\`._    ,'     ________,','
+echo         [30m.--`     ,'  ,--` __^\___,;'                              
+echo          [30m^\`.,-- ,' ,`_)--'  ^/`.,'
+echo           [30m^\( ;  ^| ^| )      (`- ^/
+echo             [30m`--'^| ^|)       ^|- ^/
+echo               [30m^| ^| ^|        ^| ^|
+echo               [30m^| ^| ^|[30m,.,-.   ^| ^|_
+echo               [30m^| `. ^[30m/ [30m^/   )---`  )
+echo              [30m_^|  ^[30m/    ,',   ,-'
+echo             [30m,'^|_[30m(    [30m^/-^<._,' ^|--,
+echo             [30m^|    [30m`[30m--'---.     ^\ ^/ ^\
+echo             [30m^|          ^/ ^\    ^/^\  ^\
+echo           [30m,-^---._     ^|  ^\  ^/  ^\  ^\
+echo        [30m,-'        ^\----'   ^\ ^/    ^\--`.
+echo      [30m ^/            ^\              ^\   ^\
+echo [96m                ╔══════════════════════════╗
+echo                 ║   1  [96mPort scanner        ║    
+echo [96m                ║   [96m2  [96mIp lookup           [96m║        
+echo [96m                ║   [96m3  [96mDos ip              [96m║               
+echo [96m                ║   [96m4  [96mUser look           [96m║    
+echo [96m                ╚══════════════════════════╝
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+set /p choice=(!) 
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+if "%choice%"=="1" (
+    call :scanIPRange
+    goto menu
+) else if "%choice%"=="2" (
+    call :ipGeoLookup
+) else if "%choice%"=="3" (
+    call :dos_ip
+    goto menu
+) else if "%choice%"=="4" (
+    call :username_lookup
+    goto menu
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+goto menu
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
+:username_lookup
+set /p username=Enter the username you want to lookup: 
+ 
+echo [94m╔═══════════════════════════════════════════════════════════════════════════════════════════════════╗
+echo [94m║ .dP"Y8 888888    db    88""Yb  dP""b8 88  88     88""Yb 888888 .dP"Y8 88   88 88     888888 .dP"Y8║
+echo [94m║ `Ybo." 88__     dPYb   88__dP dP   `" 88  88     88__dP 88__   `Ybo." 88   88 88       88   `Ybo."║
+echo [94m║ o.`Y8b 88""    dP__Yb  88"Yb  Yb      888888     88"Yb  88""   o.`Y8b Y8   8P 88  .o   88   o.`Y8b║
+echo [94m║ 8bodP' 888888 dP""""Yb 88  Yb  YboodP 88  88     88  Yb 888888 8bodP' `YbodP' 88ood8   88   8bodP'║
+echo [94m╚═══════════════════════════════════════════════════════════════════════════════════════════════════╝ 
+echo.
+echo                [37m╔════════════════════════════════════════════════════════════
+echo                ║[94mTikTok: [37mhttps://www.tiktok.com/@%username%
+echo                [37m║════════════════════════════════════════════════════════════
+echo                ║[94mInstagram: [37mhttps://www.instagram.com/%username%             
+echo                [37m║════════════════════════════════════════════════════════════
+echo                ║[94mFacebook: [37mhttps://www.facebook.com/%username%               
+echo                [37m║════════════════════════════════════════════════════════════
+echo                ║[94mTwitter: [37mhttps://www.twitter.com/%username%                 
+echo                [37m║════════════════════════════════════════════════════════════
+echo                ║[94mSteam: [37mhttps://steamcommunity.com/id/%username%             
+echo                [37m║════════════════════════════════════════════════════════════
+echo                ║[94mYouTube: [37mhttps://www.youtube.com/user/%username%            
+echo                [37m║════════════════════════════════════════════════════════════
+echo                ║[94mGitHub: [37mhttps://www.github.com/%username%                   
+echo                [37m║════════════════════════════════════════════════════════════
+echo                ║[94mReddit: [37mhttps://www.reddit.com/user/%username%              
+echo                [37m║════════════════════════════════════════════════════════════
+echo                ║[94mDiscord: [37mhttps://www.discord.com/%username%                 
+echo                [37m║════════════════════════════════════════════════════════════
+echo                ║[94mSoundCloud: [37mhttps://soundcloud.com/%username%               
+echo                [37m║════════════════════════════════════════════════════════════
+echo                ║[94mTwitch: [37mhttps://www.twitch.tv/%username%                   
+echo                [37m║════════════════════════════════════════════════════════════
+echo                ║[94mSnapchat: [37mhttps://www.snapchat.com/add/%username%           
+echo                [37m║════════════════════════════════════════════════════════════
+echo                ║[94mPinterest: [37mhttps://www.pinterest.com/%username%             
+echo                [37m╚════════════════════════════════════════════════════════════
+pause
+goto :menu
 
-# Translations
-*.mo
-*.pot
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
+:scanIPRange
+cls
+echo                                    [96m(   .      )    
+echo                                    [96m.; )  ' (( (
+echo                                    [96m_"., ,._'_
+echo                           [96m; )  ' (╔══════════╗ ; )  ' (
+echo                          [96m"., ,._' ║  Pscan   ║ "., ,._'
+echo                          [96m╔════════╚══════════╝════════╗ 
+echo                          [96m║         Ip Address         [96m║
+echo                          [96m╚════════════════════════════╝ 
 
-# Flask stuff:
-instance/
-.webassets-cache
+echo                     .  ; )  ' (( (" )    ;(.; )  ' (( (" ) 
+echo                          _"., ,._'_.,)__"., ,_"., ,._'_.,)__
+echo                         ┌─┐┌─┐┬─┐┌┬┐  ┌─┐┌─┐┌─┐┌┐┌┌┐┌┌─┐┬─┐
+echo                         ├─┘│ │├┬┘ │   └─┐│  ├─┤││││││├┤ ├┬┘
+echo                         ┴  └─┘┴└─ ┴   └─┘└─┘┴ ┴┘└┘┘└┘└─┘┴└─
+set /p ipRange=
 
-# Scrapy stuff:
-.scrapy
 
-# Sphinx documentation
-docs/_build/
+echo %ipRange% | findstr /r /i /c:"^\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}$" >nul 2>&1
+if %errorlevel% equ 0 (
+    nmap -p- -T4 -Pn %ipRange%
+) else (
+    nmap --top-ports 100 -T4 -Pn %ipRange%
+)
 
-# PyBuilder
-.pybuilder/
-target/
+if %errorlevel% neq 0 (
+    echo An error occurred while scanning the IP range. Please check the input and try again.
+    pause
+    goto scanIPRange
+) else (
+    pause
+    goto menu
+)
 
-# Jupyter Notebook
-.ipynb_checkpoints
+:dos_ip
+echo                [33m...                                
+echo              [33m;::::;                              
+echo            [33m;::::; :;                              
+echo          [33m;:::::'   :;                             
+echo         [33m;:::::;     ;.                           
+echo        [33m,:::::'       ;           [33m.OOO\           
+echo        [33m::::::;       ;          [33m.OOOOO\            
+echo        [33m;:::::;       ;         [33m.OOOOOOOO           
+echo       [33m,;::::::;     ;'         [33m./ [33mOOOOOOO          
+echo     [33m;:::::::::`. ,,,;.        [33m./  [33m/ [33mDOOOOOO        
+echo   [33m.';:::::::::::::::::;,     [33m./  [33m/     [33mDOOOO     
+echo  [33m,::::::;::::::;;;;::::;,   [33m/  [33m/        [33mDOOO     
+echo [33m;`::::::`'::::::;;;::::: ,#[33m/  [33m/          [33mDOOO   
+echo [33m:`:::::::`;::::::;;::: ;::#  [33m/            [33mDOOO   
+echo [33m::`:::::::`;:::::::: ;::::# [33m/              [33mDOO   
+echo [33m`:`:::::::`;:::::: ;::::::#[33m/               [33mDOO
+echo  [33m:::`:::::::`;; ;:::::::::##                [33mOO
+echo  [33m::::`:::::::`;::::::::;:::#                [33mOO
+echo  [33m`:::::`::::::::::::;'`:;::#                [33mO
+echo   [33m`:::::`::::::::;' [33m/  [33m/ `:#
+echo    [33m::::::`:::::;'  [33m/  [33m/   `#  
+echo [33m╔╦╗╔═╗╔═╗  ╔═╗╔╦╗╔╦╗╔═╗╔═╗╦╔═
+echo  [33m║║║ ║╚═╗  ╠═╣ ║  ║ ╠═╣║  ╠╩╗
+echo [33m═╩╝╚═╝╚═╝  ╩ ╩ ╩  ╩ ╩ ╩╚═╝╩ ╩
+set /p ip_address=Enter Local ip address: 
+set /p num_requests=Enter the number of requests to send: 
+echo Sending %num_requests% requests to %ip_address%!
+for /l %%i in (1,1,%num_requests%) do (
+    echo Request %%i sent to %ip_address%!
+    ping -n 1 %ip_address% > nul
+)
+timeout /t 5
+goto :eof
 
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
-# .python-version
-
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
-
-# poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-#poetry.lock
-
-# pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
-#pdm.lock
-#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
-#   in version control.
-#   https://pdm.fming.dev/latest/usage/project/#working-with-version-control
-.pdm.toml
-.pdm-python
-.pdm-build/
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
-
-# PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
+:ipGeoLookup
+cls
+echo [37m╔═══════════════════════════════╗
+echo ║    [94m╦[37m╔═╗  [94m╦  [37m╔═╗[94m╔═╗[37m╦╔═[94m╦ ╦[37m╔═╗[37m   ║
+echo ║    [94m║[37m╠═╝  [94m║  [37m║ ║[94m║ ║[37m╠╩╗[94m║ ║[37m╠═╝[37m   ║
+echo ║    [94m╩[37m╩    [94m╩═╝[37m╚═╝[94m╚═╝[37m╩ ╩[94m╚═╝[37m╩  [37m   ║
+echo [37m╚═══════════════════════════════╝  
+set /p "ip=[94mE[37mn[94mt[37me[94mr [37ma[94mn [37mI[94mP [37ma[97m[37md[97md[37mre[97ms[37ms: "             
+echo.
+curl -s ipinfo.io/%ip% | findstr /R /C:"\"city\":" /C:"\"postal\":" /C:"\"country\":" /C:"\"loc\":" /C:"\"timezone\":"
+echo.
+echo [94m╚═════════════════════════════════════════════
+pause
+exit /b
